@@ -41,17 +41,30 @@ class LinkedList:
 
     def reverse_list(self, node, prev):
         # node is self.head
-        while(self.head != None):
 
-            """
-            iterate through the list
-            head.next = prev
-            prev = head
-            head = next_node
-            """
-            next_node = self.head.get_next()
-            self.head.set_next(prev)
-            prev = self.head
-            self.head = next_node
+        if node == None:
+            return
 
-        self.head = prev
+        if node.get_next() == None:
+            self.head = node
+            return
+        self.reverse_list(node.get_next(), None)
+        node_bit = node.get_next()
+        node_bit.set_next(node)
+        node.set_next(None)
+
+        # while(self.head != None):
+
+        #     """
+        #     iterate through the list
+        #     head.next = prev
+        #     prev = head
+        #     head = next_node
+        #     """
+
+        #     next_node = self.head.get_next()
+        #     self.head.set_next(prev)
+        #     prev = self.head
+        #     self.head = next_node
+
+        # self.head = prev

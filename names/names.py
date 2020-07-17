@@ -72,28 +72,27 @@ f = open('names_2.txt', 'r')
 names_2 = f.read().split("\n")  # List containing 10000 names
 f.close()
 
+duplicates = []  # Return the list of duplicates in this data structure
+
 names_1_tree = BSTNode("start")
 for name_1 in names_1:
     names_1_tree.insert(name_1)
+for name in names_2:
+    if names_1_tree.contains(name):
+        duplicates.append(name)
 
-names_2_tree = BSTNode("begin")
-for name_2 in names_2:
-    names_2_tree.insert(name_2)
-
-print()
-print(names_1_tree.contains("Belen Flynn"))
-print()
-
-duplicates = []  # Return the list of duplicates in this data structure
+# names_2_tree = BSTNode("begin")
+# for name_2 in names_2:
+#     names_2_tree.insert(name_2)
 
 
-def find_duplicate(x):
-    for name_2 in names_2:
-        if x == name_2:
-            duplicates.append(x)
+# def find_duplicate(x):
+#     for name_2 in names_2:
+#         if x == name_2:
+#             duplicates.append(x)
 
 
-names_1_tree.for_each(lambda x: find_duplicate(x))
+# names_1_tree.for_each(lambda x: find_duplicate(x))
 
 
 # Replace the nested for loops below with your improvements
